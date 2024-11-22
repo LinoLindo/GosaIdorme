@@ -1,36 +1,194 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /* Fonte estilo terror */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Relatório das Redes Sociais - Minha Escola</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
-</head>
+:root {
+    --bg-color: #1c1c1c; /* Fundo escuro */
+    --primary-color: #ff4d4d; /* Vermelho intenso (sangue) */
+    --secondary-color: #f2a900; /* Amarelo fantasmagórico */
+    --highlight-color: #b3b3b3; /* Cor de destaque suave */
+    --font: 'Rock Salt', cursive;
+    --font-size-base: 16px;
+    --font-size-lg: 2.5rem;
+    --font-size-md: 1.3rem;
+    --font-size-sm: 1rem;
+    --padding: 2rem;
+}
 
-<body>
-    <header>
-        <h1>Relatório das Redes Sociais</h1>
-        <nav>
-            <a href="index.html">Mundo</a>
-            <a href="minha-escola.html" class="active">Minha Escola</a>
-        </nav>
-    </header>
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: var(--font);
+    font-size: var(--font-size-base);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 2s ease-in-out;
+}
 
-    <main class="graficos-section">
-        <section id="graficos-container" class="graficos-container">
-            <!-- Os gráficos e textos serão inseridos aqui -->
-        </section>
-    </main>
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-    <footer>
-        <p>&copy; 2024 Desenvolvido por Gui Lima</p>
-    </footer>
+header {
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+    border-bottom: 3px solid var(--secondary-color);
+    animation: pulse 2s infinite alternate;
+}
 
-    <script type="module" src="graficos/common.js"></script>
-    <script type="module" src="graficos/redesSociaisMinhaEscola.js"></script>
-</body>
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
 
-</html>
+h1 {
+    font-size: var(--font-size-lg);
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.7);
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    animation: slideIn 2s ease-in-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    margin: 0.5rem 2rem;
+    font-size: var(--font-size-md);
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.graficos-section {
+    margin-top: 3rem;
+    color: var(--highlight-color);
+    text-align: center;
+}
+
+.graficos-container {
+    margin: 3rem 5rem;
+}
+
+.graficos-container__texto {
+    font-size: var(--font-size-md);
+    text-align: center;
+    padding: var(--padding);
+    border: 2px solid var(--primary-color);
+    margin-bottom: 2rem;
+    background-color: #121212;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+span {
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    width: 100%;
+    height: 3rem;
+    margin-top: 2rem;
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+footer p {
+    font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .graficos-container {
+        margin: 2rem;
+    }
+
+    .graficos-container__texto {
+        margin-bottom: 1.5rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        font-size: var(--font-size-sm);
+        margin: 0.5rem 1rem;
+    }
+
+    .graficos-container__texto {
+        padding: 1rem;
+    }
+
+    footer {
+        font-size: var(--font-size-sm);
+        height: 2.5rem;
+    }
+}
